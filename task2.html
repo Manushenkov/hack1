@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function selectionSort(arr) {
+        let answer = [];
+        
+        for (let i = 0; i < arr.length; i++) {
+          let min = Number.POSITIVE_INFINITY;
+          for (let j = 0; j < arr.length; j++) {
+            if (arr[j] < min) {
+              min = arr[j];
+              pointer = j;
+            }
+          }
+          answer.push(arr[pointer]);
+          arr[pointer] = Number.POSITIVE_INFINITY;
+        }
+        return answer;
+      }
+
+      console.log("array", [1, 6, 9, 3, 8, 1, 5, 8, 0, 1]);
+      console.log("sorted", selectionSort([1, 6, 9, 3, 8, 1, 5, 8, 0, 1]));
+    </script>
+  </body>
+</html>
