@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function sort(arr) {
+        const sortedArr = [];
+
+        if (arr.length < 3) {
+          if (arr.length < 2) return arr 
+          if (arr[0] > arr[1]) [arr[0],arr[1]] = [arr[1],arr[0]]
+          return arr
+        }
+        sortedArr.push(Number.NEGATIVE_INFINITY);
+        sortedArr.push(arr[0]);
+        sortedArr.push(arr[1]);
+        sortedArr.push(Number.POSITIVE_INFINITY);
+
+        for (let i = 2; i < arr.length; i++) {
+          for (let j = 0; j < sortedArr.length - 1; j++) {
+            if (arr[i] >= sortedArr[j] && arr[i] <= sortedArr[j + 1]) {
+              let lastChunk = sortedArr.splice(j+1);
+              sortedArr.push(arr[i]);
+              sortedArr.push(...lastChunk);
+              break;
+            }
+          }
+        }
+
+        return sortedArr.slice(1,-1);
+      }
+
+      console.log([1, 5, 2, 5, 7, 8, 9, -1, 2]);
+      console.log(sort([1, 5, 2, 5, 7, 8, 9, -1, 2]));
+      console.log([1, 5, 2]);
+      console.log(sort([1, 5, 2]));
+      console.log([5,1]);
+      console.log(sort([5,1]));
+    </script>
+  </body>
+</html>
