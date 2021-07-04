@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function primeNumbers(n) {
+        const answer = [];
+        if (n < 2) return [];
+        if (n == 2) return [2];
+        if (n > 2) answer.push(2);
+
+        for (let i = 3; i <= n; i = i + 2) {
+          let flag = true;
+          for (let j = 2; j < i; j++) {
+            if (i % j === 0) flag = false;
+          }
+          if (flag == true) answer.push(i);
+        }
+
+        return answer;
+      }
+
+      console.log('простые числа меньше или равные', 11);
+      console.log(primeNumbers(11));
+      console.log('простые числа меньше или равные', 1);
+      console.log(primeNumbers(1));
+      console.log('простые числа меньше или равные', 2);
+      console.log(primeNumbers(2));
+      console.log('простые числа меньше или равные', 3);
+      console.log(primeNumbers(3));
+    </script>
+  </body>
+</html>
