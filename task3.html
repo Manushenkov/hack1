@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function brackets(str) {
+        const map = {
+          "{": "}",
+          "(": ")",
+          "[": "]",
+        };
+        const br = ["{", "}", "(", ")", "[", "]"];
+        let openedBrackets = [];
+
+        for (let i = 0; i < str.length; i++) {
+          if (map.hasOwnProperty(str[i])) {
+            openedBrackets.push(str[i]);
+            continue;
+          }
+
+          if (br.includes(str[i])) {
+            // console.log(i,openedBrackets, "asdf");
+            if (map[openedBrackets.pop()] !== str[i]) {
+              // console.log(openedBrackets)
+              return false;
+            }
+          }
+        }
+        return openedBrackets.length === 0 ? true : false;
+      }
+
+      console.log("{zzz{ccc}[asd](1)");
+      console.log(brackets("{zzz{ccc}[asd](1)"));
+      console.log("{{](1)");
+      console.log(brackets("{{](1)"));
+      console.log("{)");
+      console.log(brackets("{)"));
+      console.log("(1)");
+      console.log(brackets("(1)"));
+      console.log("()");
+      console.log(brackets("()"));
+      console.log("({[}])");
+      console.log(brackets("({[}])"));
+    </script>
+  </body>
+</html>
