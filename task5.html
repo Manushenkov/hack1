@@ -3,29 +3,42 @@
   <body>
     <script>
       function primeNumbers(n) {
-        const answer = [];
+        let foundPrime = [];
+
         if (n < 2) return [];
         if (n == 2) return [2];
-        if (n > 2) answer.push(2);
+        if (n > 2) foundPrime.push(2);
+
 
         for (let i = 3; i <= n; i = i + 2) {
           let flag = true;
-          for (let j = 2; j < i; j++) {
-            if (i % j === 0) flag = false;
+          let sqrt = Math.sqrt(i)
+
+          for (j of foundPrime) {
+            if (i % j === 0) {
+              flag = false
+              break
+            }
+            if (j > sqrt) break
           }
-          if (flag == true) answer.push(i);
+
+          if (flag == true) {
+            foundPrime.push(i);
+          }
         }
 
-        return answer;
+        return foundPrime;
       }
 
-      console.log('простые числа меньше или равные', 11);
+      console.log("простые числа меньше или равные", 11);
       console.log(primeNumbers(11));
-      console.log('простые числа меньше или равные', 1);
+      console.log("простые числа меньше или равные", 111);
+      console.log(primeNumbers(111));
+      console.log("простые числа меньше или равные", 1);
       console.log(primeNumbers(1));
-      console.log('простые числа меньше или равные', 2);
+      console.log("простые числа меньше или равные", 2);
       console.log(primeNumbers(2));
-      console.log('простые числа меньше или равные', 3);
+      console.log("простые числа меньше или равные", 3);
       console.log(primeNumbers(3));
     </script>
   </body>
