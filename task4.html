@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function treeSearch(tree) {
+        const answer = [];
+
+        const recursiveSearch = (branch) => {
+          answer.push(branch.value);
+
+          if (branch.children.length === 0) return;
+          
+          for (let i = 0; i < branch.children.length; i++) {
+            recursiveSearch(branch.children[i]);
+          }
+        };
+
+        recursiveSearch(tree);
+
+        return answer;
+      }
+
+      const tree = {
+        value: "root",
+        children: [
+          {
+            value: "1genleft",
+            children: [
+              {
+                value: "2genright-left",
+                children: [
+                  { 
+                    value: "3genright-left deepest", 
+                    children: [] 
+                  }
+                ],
+              },
+            ],
+          },
+          {
+            value: "1genright",
+            children: [{ value: "2genright-left", children: [] }],
+          },
+        ],
+      };
+
+      console.log(tree);
+      console.log(treeSearch(tree));
+    </script>
+  </body>
+</html>
