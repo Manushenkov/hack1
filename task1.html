@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <script>console.log('log')</script>
+    <script>
+      function bubbleSort(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+          }
+        }
+        return arr;
+      }
+
+      console.log("array", [1, 6, 9, 3, 8, 1, 5, 8, 0, 1]);
+      console.log("sorted", bubbleSort([1, 6, 9, 3, 8, 1, 5, 8, 0, 1]));
+    </script>
   </body>
 </html>
