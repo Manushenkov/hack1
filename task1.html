@@ -2,19 +2,50 @@
 <html>
   <body>
     <script>
-      function bubbleSort(arr) {
-        for (let i = 0; i < arr.length; i++) {
-          for (let j = 0; j < arr.length - i; j++) {
-            if (arr[j] > arr[j + 1]) {
-              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-            }
+      function treeSearch(tree) {
+        const answer = [];
+
+        const recursiveSearch = (branch) => {
+          answer.push(branch.value);
+
+          if (branch.children.length === 0) return;
+          
+          for (let i = 0; i < branch.children.length; i++) {
+            recursiveSearch(branch.children[i]);
           }
-        }
-        return arr;
+        };
+
+        recursiveSearch(tree);
+
+        return answer;
       }
 
-      console.log([1, 6, 9, 3, 8, 1, 5, 8, 0, 1]);
-      console.log(bubbleSort([1, 6, 9, 3, 8, 1, 5, 8, 0, 1]));
+      const tree = {
+        value: "root",
+        children: [
+          {
+            value: "1genleft",
+            children: [
+              {
+                value: "2genright-left",
+                children: [
+                  { 
+                    value: "3genright-left deepest", 
+                    children: [] 
+                  }
+                ],
+              },
+            ],
+          },
+          {
+            value: "1genright",
+            children: [{ value: "2genright-left", children: [] }],
+          },
+        ],
+      };
+
+      console.log(tree);
+      console.log(treeSearch(tree));
     </script>
   </body>
 </html>
