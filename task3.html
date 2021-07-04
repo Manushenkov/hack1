@@ -8,19 +8,16 @@
           "(": ")",
           "[": "]",
         };
-        const br = ["}", ")", "]"];
+        const br = ["{", "}", "(", ")", "[", "]"];
         let openedBrackets = [];
 
         for (let i = 0; i < str.length; i++) {
+          if (!br.includes(str[i])) continue;
+
           if (map.hasOwnProperty(str[i])) {
             openedBrackets.push(str[i]);
-            continue;
-          }
-
-          if (br.includes(str[i])) {
-            if (map[openedBrackets.pop()] !== str[i]) {
-              return false;
-            }
+          } else if (map[openedBrackets.pop()] !== str[i]) {
+            return false;
           }
         }
         return openedBrackets.length === 0 ? true : false;
@@ -41,3 +38,4 @@
     </script>
   </body>
 </html>
+
